@@ -112,9 +112,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: odoo-test-logs
-          path: |
-            test-results.log
-            coverage.xml
+          path: test-results.log
           retention-days: 7
 
       - name: Update Coverage Badge

@@ -1,0 +1,9 @@
+# Additional dependencies for custom modules and CI
+coverage
+phonenumbers
+pyzmq
+google-auth
+google-api-python-client
+oauthlib
+pyjwt
+lxml-html-clean ; python_version >= '3.12'

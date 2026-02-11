@@ -18,4 +18,3 @@
 #         return http.request.render('placeholder_module.object', {
 #             'object': obj
 #         })
-

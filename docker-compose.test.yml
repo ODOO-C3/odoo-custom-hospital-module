@@ -23,6 +23,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    user: root
     environment:
       - HOST=db
       - USER=odoo
@@ -72,3 +73,4 @@ services:
         echo "--- CODE COVERAGE REPORT ---"
         coverage report -m
         coverage xml -o /mnt/extra-addons/coverage.xml
+        coverage html -d /mnt/extra-addons/htmlcov

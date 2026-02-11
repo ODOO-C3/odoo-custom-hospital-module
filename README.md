@@ -47,6 +47,9 @@ docker compose down -v         # Stop and delete data
 # Run all tests with coverage
 docker compose -f docker-compose.test.yml up --build --abort-on-container-exit
 
+# View detailed HTML report
+Open htmlcov/index.html in your browser
+
 # Test specific module(s)
 MODULES=placeholder_module docker compose -f docker-compose.test.yml up --build --abort-on-container-exit
 

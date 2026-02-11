@@ -1,7 +1,9 @@
 # Odoo 19 Custom Modules
 
 [![Odoo CI/CD](https://github.com/mir4na/odoo-custom-hospital-module/actions/workflows/ci.yml/badge.svg)](https://github.com/mir4na/odoo-custom-hospital-module/actions/workflows/ci.yml)
+<!-- COVERAGE_BADGE_START -->
 ![Coverage](https://img.shields.io/badge/coverage-96%25-green)
+<!-- COVERAGE_BADGE_END -->
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 
 Custom Odoo modules with Docker-based development and CI/CD.

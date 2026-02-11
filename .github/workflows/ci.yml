@@ -10,6 +10,9 @@ concurrency:
   group: odoo-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+
 jobs:
   # ──────────────────────────────────────────────
   # Lint — Static Code Analysis with Ruff

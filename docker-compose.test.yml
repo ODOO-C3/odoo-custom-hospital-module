@@ -71,6 +71,6 @@ services:
 
         # Generate reports
         echo "--- CODE COVERAGE REPORT ---"
-        coverage report -m
-        coverage xml -o /mnt/extra-addons/coverage.xml
-        coverage html -d /mnt/extra-addons/htmlcov
+        coverage report -m --omit="**/__manifest__.py"
+        coverage xml -o /mnt/extra-addons/coverage.xml --omit="**/__manifest__.py"
+        coverage html -d /mnt/extra-addons/htmlcov --omit="**/__manifest__.py"

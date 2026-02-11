@@ -27,6 +27,7 @@ services:
       - HOST=db
       - USER=odoo
       - PASSWORD=odoo
+      - COVERAGE_FILE=/tmp/.coverage
     volumes:
       - .:/mnt/extra-addons
     command:
@@ -59,8 +60,14 @@ services:
             TAGS="$$TAGS/$$i"
         done
 
-        echo "Running tests with tags: $$TAGS"
+        echo "Running tests with coverage and tags: $$TAGS"
 
-        exec odoo --database=test_db --db_host=db --db_user=odoo --db_password=odoo \
+        # Use coverage to run the tests
+        coverage run --source=/mnt/extra-addons \
+             /usr/bin/odoo --database=test_db --db_host=db --db_user=odoo --db_password=odoo \
              --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons \
              --init="$$MODULES_LIST" --test-tags="$$TAGS" --stop-after-init --no-http --log-level=test
+
+        # Generate report
+        echo "--- CODE COVERAGE REPORT ---"
+        coverage report -m

@@ -112,6 +112,22 @@ jobs:
           path: test-results.log
           retention-days: 7
 
+      - name: Update Coverage Badge
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          PERCENTAGE=$(grep "TOTAL" test-results.log | awk '{print $NF}' | tr -d '%')
+          echo "Coverage: $PERCENTAGE%"
+          
+          COLOR="green"
+          if [ "$PERCENTAGE" -lt 50 ]; then COLOR="red"; elif [ "$PERCENTAGE" -lt 80 ]; then COLOR="yellow"; fi
+
+          sed -i "/<!-- COVERAGE_BADGE_START -->/,/<!-- COVERAGE_BADGE_END -->/c\<!-- COVERAGE_BADGE_START -->\n![Coverage](https://img.shields.io/badge/coverage-${PERCENTAGE}%25-${COLOR})\n<!-- COVERAGE_BADGE_END -->" README.md
+          
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --quiet && git diff --staged --quiet || (git commit -m "docs: update coverage badge to ${PERCENTAGE}% [skip ci]" && git push)
+
       - name: Teardown
         if: always()
         run: docker compose -f docker-compose.test.yml down -v

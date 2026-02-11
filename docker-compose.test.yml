@@ -1,0 +1,37 @@
+# Odoo 19 - CI/CD Test Configuration
+# Usage: docker compose -f docker-compose.test.yml up --build --abort-on-container-exit
+
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+      POSTGRES_DB: postgres
+    tmpfs:
+      - /var/lib/postgresql/data  # Use RAM for faster tests
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo"]
+      interval: 2s
+      timeout: 2s
+      retries: 10
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+    command: >
+      odoo
+      --database=test_db
+      --init=${MODULES:-my_module}
+      --test-enable
+      --stop-after-init
+      --no-http
+      --log-level=test

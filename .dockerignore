@@ -1,0 +1,12 @@
+# Don't copy these into the Docker image
+.git
+.github
+.gitignore
+.dockerignore
+docker-compose*.yml
+Dockerfile
+README.md
+*.pyc
+__pycache__
+.idea
+.vscode

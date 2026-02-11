@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Odoo artifacts (if any get created locally)
+*.pyc
+.eggs/
+*.egg-info/

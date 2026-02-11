@@ -68,5 +68,7 @@ services:
              --addons-path=/usr/lib/python3/dist-packages/odoo/addons,/mnt/extra-addons \
              --init="$$MODULES_LIST" --test-tags="$$TAGS" --stop-after-init --no-http --log-level=test
 
+        # Generate reports
         echo "--- CODE COVERAGE REPORT ---"
         coverage report -m
+        coverage xml -o /mnt/extra-addons/coverage.xml

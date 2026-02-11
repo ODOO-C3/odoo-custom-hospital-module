@@ -23,11 +23,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: odoo-test-logs
+          path: .
           run-id: ${{ github.event.workflow_run.id }}
           github-token: ${{ github.token }}
 
       - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v4
+        uses: SonarSource/sonarqube-scan-action@094fb4bef2a106e232598f48035ed88661642230
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: https://sonarcloud.io

@@ -2,7 +2,7 @@
 
 [![Odoo CI/CD](https://github.com/ODOO-C3/odoo-custom-hospital-module/actions/workflows/ci.yml/badge.svg)](https://github.com/ODOO-C3/odoo-custom-hospital-module/actions/workflows/ci.yml)
 <!-- COVERAGE_BADGE_START -->
-![Coverage](https://img.shields.io/badge/coverage-96%25-green)
+![Coverage](https://img.shields.io/badge/coverage-100%25-green)
 <!-- COVERAGE_BADGE_END -->
 ![Python](https://img.shields.io/badge/python-3.12-blue)
 
